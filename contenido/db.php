@@ -5,7 +5,7 @@ $conn = mysqli_connect(
   'localhost',
   'root',
   '',
-  'php_mysql_crud'
+  'apoyos'
 ) or die(mysqli_erro($mysqli));
 
 ?>

@@ -27,30 +27,41 @@ include'db.php';
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>title</th>
-                      <th>description</th>
-                      <th>created_at</th>
-                      <th>actions</th>
+                      <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Direccion</th>
+            <th>INE</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Correo Electronico</th>
+            <th>Fecha de Creacion</th>
+            <th>Acciones</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>title</th>
-                      <th>description</th>
-                      <th>created_at</th>
+                      <th>Nombre</th>
+                      <th>Apellido Paterno</th>
+                      <th>Apellido Materno</th>
+                      <th>Fecha de creacion</th>
                       <th>actions</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
-          $query = "SELECT * FROM task";
+          $query = "SELECT * FROM civiles";
           $result_tasks = mysqli_query($conn, $query);    
 
           while($row = mysqli_fetch_assoc($result_tasks)) { ?>
           <tr>
-            <td><?php echo $row['title']; ?></td>
-            <td><?php echo $row['description']; ?></td>
-            <td><?php echo $row['created_at']; ?></td>
+            <td><?php echo $row['nombre']; ?></td>
+            <td><?php echo $row['app']; ?></td>
+            <td><?php echo $row['apm']; ?></td>
+            <td><?php echo $row['direccion']; ?></td>
+            <td><?php echo $row['ine']; ?></td>
+            <td><?php echo $row['nacimiento']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['creado']; ?></td>
             <td>
               <a href="edit.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
                 <i class="fas fa-marker"></i>
