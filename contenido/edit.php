@@ -1,29 +1,42 @@
 <?php
 include("db.php");
-$title = '';
-$description= '';
+$nombre = '';
+$app= '';
+$apm= '';
+$direccion= '';
 
 if  (isset($_GET['id'])) {
   $id = $_GET['id'];
-  $query = "SELECT * FROM task WHERE id=$id";
+  $query = "SELECT * FROM civiles WHERE id=$id";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_array($result);
-    $title = $row['title'];
-    $description = $row['description'];
+    $nombre = $row['nombre'];
+    $app = $row['app'];
+    $apm = $row['apm'];
+    $direccion = $row['direccion'];
+    $ine = $row['ine'];
+    $nacimiento = $row['nacimiento'];
+    $email = $row['email'];
+
   }
 }
 
 if (isset($_POST['update'])) {
   $id = $_GET['id'];
-  $title= $_POST['title'];
-  $description = $_POST['description'];
+  $nombre= $_POST['nombre'];
+  $app = $_POST['app'];
+  $apm = $_POST['apm'];
+  $direccion = $_POST['direccion'];
+  $ine = $_POST['ine'];
+  $nacimiento = $_POST['nacimiento'];
+  $email= $_POST['email'];
 
-  $query = "UPDATE task set title = '$title', description = '$description' WHERE id=$id";
+  $query = "UPDATE civiles set nombre = '$nombre', app = '$app', apm = '$apm', direccion = '$direccion', ine = '$ine', nacimiento = '$nacimiento', email = '$email' WHERE id=$id";
   mysqli_query($conn, $query);
-  $_SESSION['message'] = 'Task Updated Successfully';
+  $_SESSION['message'] = 'Datos Actualizados Correctamente';
   $_SESSION['message_type'] = 'warning';
-  header('Location: registros.php');
+  header('Location: rb.php');
 }
 
 ?>
@@ -34,10 +47,25 @@ if (isset($_POST['update'])) {
       <div class="card card-body">
       <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
         <div class="form-group">
-          <input name="title" type="text" class="form-control" value="<?php echo $title; ?>" placeholder="Update Title">
+          <input name="nombre" type="text" class="form-control" value="<?php echo $nombre; ?>" placeholder="Update Title">
         </div>
         <div class="form-group">
-        <textarea name="description" class="form-control" cols="30" rows="10"><?php echo $description;?></textarea>
+        <textarea name="app" class="form-control" cols="30" rows="10"><?php echo $app;?></textarea>
+        </div>
+        <div class="form-group">
+          <input name="apm" type="text" class="form-control" value="<?php echo $apm; ?>" placeholder="Update Title">
+        </div>
+        <div class="form-group">
+          <input name="direccion" type="text" class="form-control" value="<?php echo $direccion; ?>" placeholder="Update Title">
+        </div>
+        <div class="form-group">
+          <input name="ine" type="text" class="form-control" value="<?php echo $ine; ?>" placeholder="Update Title">
+        </div>
+        <div class="form-group">
+          <input name="nacimiento" type="text" class="form-control" value="<?php echo $nacimiento; ?>" placeholder="Update Title">
+        </div>
+        <div class="form-group">
+          <input name="email" type="text" class="form-control" value="<?php echo $email; ?>" placeholder="Update Title">
         </div>
         <button class="btn-success" name="update">
           Update
